@@ -37,7 +37,6 @@ class Valohai(Stack):
         vpc = ec2.Vpc.from_lookup(self, "VPC", vpc_id=vpc_id)
         roi_subnets = ec2.SubnetSelection(
             subnets=vpc.select_subnets(
-                subnet_type=ec2.SubnetType.PUBLIC,
                 subnet_filters=[ec2.SubnetFilter.by_ids([roi_subnet_id])],
             ).subnets
         )
