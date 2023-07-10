@@ -1,0 +1,92 @@
+{
+  "vpc-provider:account=450886142693:filter.vpc-id=vpc-0c8ec4ee1d896e520:region=eu-west-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0c8ec4ee1d896e520",
+    "vpcCidrBlock": "10.0.12.0/26",
+    "ownerAccountId": "450886142693",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-07c34fe9713417df5",
+            "cidr": "10.0.12.32/28",
+            "availabilityZone": "eu-west-1a",
+            "routeTableId": "rtb-0193a1b1c3f8f4004"
+          },
+          {
+            "subnetId": "subnet-05d63d3196ec6b68a",
+            "cidr": "10.0.12.48/28",
+            "availabilityZone": "eu-west-1b",
+            "routeTableId": "rtb-0be2fc7dc3b8c7c4c"
+          }
+        ]
+      },
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-032ec2b45b2ace990",
+            "cidr": "10.0.12.0/28",
+            "availabilityZone": "eu-west-1a",
+            "routeTableId": "rtb-04d83547c186e4c67"
+          },
+          {
+            "subnetId": "subnet-0ada2cde1016734bb",
+            "cidr": "10.0.12.16/28",
+            "availabilityZone": "eu-west-1b",
+            "routeTableId": "rtb-04d83547c186e4c67"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=450886142693:filters.image-type.0=machine:filters.name.0=valohai-roi-*:filters.state.0=available:owners.0=635691382966:region=eu-west-1": "ami-0c35b0bc442851ab1",
+  "vpc-provider:account=450886142693:filter.vpc-id=vpc-066122736a3c21fc2:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-066122736a3c21fc2",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "ownerAccountId": "450886142693",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-095202b0a4f855773",
+            "cidr": "10.0.128.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0ed07290ee7e73075"
+          },
+          {
+            "subnetId": "subnet-0876140165953bf66",
+            "cidr": "10.0.144.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-08c364d5ce3988e31"
+          }
+        ]
+      },
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-09fa71506c5274edf",
+            "cidr": "10.0.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0a08d593d9b25d59e"
+          },
+          {
+            "subnetId": "subnet-0ef2e899c53ce8e3f",
+            "cidr": "10.0.16.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0a08d593d9b25d59e"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=450886142693:filters.image-type.0=machine:filters.name.0=valohai-roi-*:filters.state.0=available:owners.0=635691382966:region=us-east-1": "ami-0680518a203cc1dc8"
+}

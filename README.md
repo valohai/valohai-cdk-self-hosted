@@ -1,16 +1,39 @@
+# Valohai Self-Hosted CDK Template
 
-# Welcome to your CDK Python project!
+This template allows you provision AWS resources for a self-hosted Valohai installation.
 
-This is a blank project for CDK development with Python.
+* Security Groups
+* EC2 instance (valohai-master)
+* RDS PostgreSQL database 
+* ElastiCache Redis
+* LoadBalancer
+* IAM Roles
+    * ValohaiMaster (attached to `valohai-master`)
+    * ValohaiWorker (attached to all workers by default)
+* S3 Bucket
+* AWS Secrets Manager Secret to store RDS password
+* AWS Systems Manager Parameter Store to store the SSH Key of `valohai-master`
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+To deploy:
+1. Follow the steps below to activate the virtual environment and install requirements.
+2. Review the `cdk.json` file for configuration options (VPC, subnet, tags, etc.)
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+## Options
+
+Use the `config.yaml` to define AWS Account details:
+
+* `aws_region` - Which AWS Region to deploy to
+* `aws_account_id` - Which AWS Account to deploy to
+* `lb_subnet_ids` - A list of subnets for the loadbalancer (public IPs)
+* `roi_subnet_id` - A subnet for the main Valohai instance (private IP)
+* `db_subnet_ids` - A list of subnets for the Postgres database (private IPs)
+* `cache_subnet_ids` - A list of subnets for the Redis cache, which works as the job queue (private IPs)
+* `worker_subnet_ids` - A list of subnets for the EC2 instacens that'll be used for Valohai workers (private IPs)
+* `vpc_id`- The VPC ID to be used
+* `environment_name` - Name of the environment (e.g. MyOrg-Valohai)
+* `domain` - Domain to be used for the environment
+
+## Run
 
 To manually create a virtualenv on MacOS and Linux:
 
