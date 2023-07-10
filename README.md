@@ -12,7 +12,7 @@ This template allows you provision AWS resources for a self-hosted Valohai insta
     * ValohaiWorker (attached to all workers by default)
 * S3 Bucket
 * AWS Secrets Manager Secret to store RDS password
-* AWS Systems Manager Parameter Store to store the SSH Key of `valohai-master`
+* AWS Systems Manager Parameter Store to settings for Valohai
 
 To deploy:
 1. Follow the steps below to activate the virtual environment and install requirements.
