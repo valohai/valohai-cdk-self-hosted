@@ -83,7 +83,7 @@ class Database(Construct):
             preferred_maintenance_window="Mon:00:00-Mon:03:00",
             preferred_backup_window="03:00-06:00",
             backup_retention=cdk.Duration.days(5),
-            deletion_protection=False,
+            deletion_protection=True,
         )
 
         ssm.StringParameter(
