@@ -105,6 +105,11 @@ To delete the Postgresql database:
 To delete the S3 Bucket:
 
 * Update the bucket properties by setting `removal_policy` to `RemovalPolicy.DESTROY` in `backend/s3/infrastructure.py`.
+* Run `cdk synth` and `cdk deploy` on the CLI.
+
+Finally, to remove the delete the whole stack:
+
+* Run `cdk destroy`
 
 ## Useful commands
 
