@@ -6,7 +6,7 @@ sudo apt-get install jq -y
 sudo systemctl stop roi
 export ROI_AUTO_MIGRATE=true
 
-sed -i '/^.*docker run.*/a --net=host \\' /etc/systemd/system/roi.service
+sed -i '/^.*docker run.*/a\    --net=host \\' /etc/systemd/system/roi.service
 sudo systemctl daemon-reload
 
 export REPO_PRIVATE_KEY=`aws secretsmanager get-secret-value --secret-id valohai-secret-repo | sed -n 's|.*"SecretString": *"\([^"]*\)".*|\1|p'`
@@ -23,7 +23,7 @@ export AWS_ACCOUNT=`aws sts get-caller-identity | jq -r .Account`
 
 sed -i "s|URL_BASE=|URL_BASE=$DOMAIN|" /etc/roi.config
 sed -i "s|AWS_REGION=|AWS_REGION=$AWS_REGION|" /etc/roi.config
-sed -i "s|AWS_S3_BUCKET_NAME=|AWS_S3_BUCKET_NAME=$BUCKET_NAME|" /etc/roi.config
+sed -i "s|AWS_S3_BUCKET_NAME=|AWS_S3_BUCKET_NAME=valohai-data-$AWS_ACCOUNT|" /etc/roi.config
 sed -i "s|AWS_S3_MULTIPART_UPLOAD_IAM_ROLE=|AWS_S3_MULTIPART_UPLOAD_IAM_ROLE=arn:aws:iam::$AWS_ACCOUNT:role/valohai-role-multipart|" /etc/roi.config
 sed -i "s|CELERY_BROKER=|CELERY_BROKER=redis://$REDIS_URL:6379|" /etc/roi.config
 sed -i "s|DATABASE_URL=|DATABASE_URL=psql://roi:$DB_PASSWORD@$DB_URL:5432/roidb|" /etc/roi.config
