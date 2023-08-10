@@ -1,6 +1,6 @@
 import aws_cdk.aws_ec2 as ec2
-import aws_cdk.aws_ssm as ssm
 import aws_cdk.aws_elasticache as elasticache
+import aws_cdk.aws_ssm as ssm
 from constructs import Construct
 
 

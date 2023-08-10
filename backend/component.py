@@ -1,19 +1,17 @@
 from typing import Any
 
-from aws_cdk import (
-    Stack,
-    Tags,
-    aws_ec2 as ec2,
-    aws_elasticloadbalancingv2_targets as targets,
-)
+from aws_cdk import Stack
+from aws_cdk import Tags
+from aws_cdk import aws_ec2 as ec2
+from aws_cdk import aws_elasticloadbalancingv2_targets as targets
 from constructs import Construct
 
+from backend.compute.infrastructure import RoiInstance
 from backend.iam.infrastructure import IAM
 from backend.lb.infrastructure import LoadBalancer
-from backend.compute.infrastructure import RoiInstance
 from backend.postgres.infrastructure import Database
-from backend.s3.infrastructure import Bucket
 from backend.redis.infrastructure import Queue
+from backend.s3.infrastructure import Bucket
 
 
 class Valohai(Stack):

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
+import yaml
 
 from backend.component import Valohai
-import yaml
 
 with open("config.yaml", "r") as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
