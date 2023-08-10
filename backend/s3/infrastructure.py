@@ -1,4 +1,5 @@
 import aws_cdk.aws_s3 as s3
+from aws_cdk import RemovalPolicy
 from constructs import Construct
 
 
@@ -19,4 +20,5 @@ class Bucket(Construct):
             access_control=s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
             encryption=s3.BucketEncryption.S3_MANAGED,
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
+            removal_policy=RemovalPolicy.RETAIN,
         )

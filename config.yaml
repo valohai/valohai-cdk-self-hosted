@@ -3,7 +3,7 @@ aws_account_id: 450886142693
 lb_subnet_ids:
   - subnet-09fa71506c5274edf
   - subnet-0ef2e899c53ce8e3f
-roi_subnet_id: subnet-0ef2e899c53ce8e3f
+roi_subnet_id: subnet-0876140165953bf66
 db_subnet_ids:
   - subnet-0876140165953bf66
   - subnet-095202b0a4f855773
