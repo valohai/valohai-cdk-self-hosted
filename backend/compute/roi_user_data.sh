@@ -4,10 +4,9 @@ sudo apt-get update
 sudo apt-get install jq -y
 
 sudo systemctl stop roi
-export AWS_PROFILE=default
 export ROI_AUTO_MIGRATE=true
 
-sed -i '/^ExecStart=/usr/bin/docker run \/a --net=host \' /etc/systemd/system/roi.service
+sed -i '/^.*docker run.*/a --net=host \\' /etc/systemd/system/roi.service
 sudo systemctl daemon-reload
 
 export REPO_PRIVATE_KEY=`aws secretsmanager get-secret-value --secret-id valohai-secret-repo | sed -n 's|.*"SecretString": *"\([^"]*\)".*|\1|p'`
