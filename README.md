@@ -46,6 +46,16 @@ Use the `config.yaml` to define AWS Account details:
 * `environment_name` - Name of the environment (e.g. MyOrg-Valohai)
 * `domain` - Domain to be used for the environment
 
+## Prerequisites
+
+* Configure an AWS profile with your credentials by running `aws configure --profile myname` on your workstation.
+* Install Node.js 10.13 or later on your workstation ([nodejs.org](https://nodejs.org/en)). Note that Node.js versions from 13.0.0 to 13.6.0 have compatibility issues with AWS CDK's dependencies. 
+* Install the AWS CDK Toolkit:
+
+```
+$ npm install -g aws-cdk
+```
+
 ## Run
 
 To manually create a virtualenv on MacOS and Linux:
@@ -83,12 +93,31 @@ To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
+## Removing Valohai resources
+
+The Postgresql database for Valohai data has delete protection on and it won't be deleted by default. The created S3 Bucket won't be deleted either unless you explicitly set it to be destroyed. Make sure to collect any important files before deleting the bucket. 
+
+To delete the Postgresql database:
+
+* Update the database properties by setting `deletion_protection` to `False` in `backend/postgres/infrastructure.py`.
+* Run `cdk synth` and `cdk deploy` on the CLI.
+
+To delete the S3 Bucket:
+
+* Update the bucket properties by setting `removal_policy` to `RemovalPolicy.DESTROY` in `backend/s3/infrastructure.py`.
+* Run `cdk synth` and `cdk deploy` on the CLI.
+
+Finally, to remove the delete the whole stack:
+
+* Run `cdk destroy`
+
 ## Useful commands
 
  * `cdk ls`          list all stacks in the app
  * `cdk synth`       emits the synthesized CloudFormation template
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
+ * `cdk destroy`     destroy this stack from your default AWS account/region
  * `cdk docs`        open CDK documentation
 
 Enjoy!
