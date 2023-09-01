@@ -58,10 +58,14 @@ $ npm install -g aws-cdk
 
 ## Run
 
+You'll need to install AWS CDK:
+* Install  https://nodejs.org/en/download
+* After that run `npm install -g aws-cdk`
+
 To manually create a virtualenv on MacOS and Linux:
 
 ```
-$ python3 -m venv .venv
+$ python -m venv .venv
 ```
 
 After the init process completes and the virtualenv is created, you can use the following
@@ -81,6 +85,12 @@ Once the virtualenv is activated, you can install the required dependencies.
 
 ```
 $ pip install -r requirements.txt
+```
+
+Bootstrap our CDK environment
+
+```
+$ cdk bootstrap
 ```
 
 At this point you can now synthesize the CloudFormation template for this code.
