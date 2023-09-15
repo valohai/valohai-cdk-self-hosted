@@ -53,7 +53,7 @@ class IAM(Construct):
         role_worker_instance_profile = iam.CfnInstanceProfile(
             self,
             "ValohaiWorkerInstanceProfile",
-            roles=[role_worker.role_name],
+            roles=[self.role_worker.role_name],
             instance_profile_name="ValohaiWorkerInstanceProfile",
         )
 
