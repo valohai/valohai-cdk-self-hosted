@@ -50,6 +50,13 @@ class IAM(Construct):
         )
         self.role_worker.add_managed_policy(worker_policy)
 
+        role_worker_instance_profile = iam.CfnInstanceProfile(
+            self,
+            "ValohaiWorkerInstanceProfile",
+            roles=[role_worker.role_name],
+            instance_profile_name="ValohaiWorkerInstanceProfile",
+        )
+
         # ValohaiMaster
         master_policy_document_json = {
             "Version": "2012-10-17",
@@ -196,6 +203,7 @@ class IAM(Construct):
             assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"),
         )
         self.role_master.add_managed_policy(master_policy)
+        
 
         # S3 Access
         multipart_policy_document_json = {
